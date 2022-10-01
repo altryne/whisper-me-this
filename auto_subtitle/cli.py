@@ -16,6 +16,10 @@ def main():
                         choices=whisper.available_models(), help="name of the Whisper model to use")
     parser.add_argument("--output_dir", "-o", type=str,
                         default=".", help="directory to save the outputs")
+    
+    parser.add_argument("--save_subtitles", type=str2bool, default=True,
+                        help="Whether to save the srt file alongside the video")
+    
     parser.add_argument("--verbose", type=str2bool, default=False,
                         help="Whether to print out the progress and debug messages")
 
@@ -25,6 +29,7 @@ def main():
     args = parser.parse_args().__dict__
     model_name: str = args.pop("model")
     output_dir: str = args.pop("output_dir")
+    save_subtitles: bool = args.pop("save_subtitles")
     os.makedirs(output_dir, exist_ok=True)
 
     if model_name.endswith(".en"):
@@ -79,8 +84,11 @@ def get_subtitles(audio_paths: list, transcribe: callable):
     subtitles_path = {}
 
     for path, audio_path in audio_paths.items():
-        srt_path = os.path.join(temp_dir, f"{filename(path)}.srt")
-
+        if not save_subtitles:
+            srt_path = os.path.join(temp_dir, f"{filename(path)}.srt")
+        else:
+            srt_path = os.path.join(output_dir, f"{filename(path)}.srt")
+            
         print(
             f"Generating subtitles for {filename(path)}... This might take a while."
         )
