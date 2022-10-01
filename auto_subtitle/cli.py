@@ -40,7 +40,7 @@ def main():
     model = whisper.load_model(model_name)
     audios = get_audio(args.pop("video"))
     subtitles = get_subtitles(
-        audios, lambda audio_path: model.transcribe(audio_path, **args), save_subtitles
+        audios, lambda audio_path: model.transcribe(audio_path, **args), save_subtitles, output_dir
     )
     # bash command to download a youtube video with `youtube-dl` and save it as `video.mp4`:
     # youtube-dl -f 22 -o video.mp4 https://www.youtube.com/watch?v=QH2-TGUlwu4
@@ -80,7 +80,7 @@ def get_audio(paths):
     return audio_paths
 
 
-def get_subtitles(audio_paths: list, transcribe: callable, save_subtitles: bool):
+def get_subtitles(audio_paths: list, transcribe: callable, save_subtitles: bool, output_dir: str):
     temp_dir = tempfile.gettempdir()
     subtitles_path = {}
 
