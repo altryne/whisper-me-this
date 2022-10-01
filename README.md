@@ -1,43 +1,19 @@
-# Automatic subtitles in your videos
+# Whisper me this - Automatic subtitles with OpenAi whisper
 
-This repository uses `ffmpeg` and [OpenAI's Whisper](https://openai.com/blog/whisper) to automatically generate and overlay subtitles on any video.
+[@altryne](https://twitter.com/altryne) [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N3DWMR1)
 
-## Installation
+Provide a link on the web, and whisper-me-this will download, transcribe or translate your video, and let you download a subbed video or just the srt files. 
 
-To get started, you'll need Python 3.7 or newer. Install the binary by running the following command:
+# COLAB LINK: 
 
-    pip install git+https://github.com/m1guelpf/auto-subtitle.git
+[![ko-fi](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altryne/whisper-me-this/blob/main/whisper_me_this.ipynb)
 
-You'll also need to install [`ffmpeg`](https://ffmpeg.org/), which is available from most package managers:
+# Possible ethical uses: 
 
-```bash
-# on Ubuntu or Debian
-sudo apt update && sudo apt install ffmpeg
+Translate the historic [Ukraine President Zelensky NATO address](https://twitter.com/altryne/status/1575887440782716929). 
+Whisper is really good in Ukranian.
 
-# on MacOS using Homebrew (https://brew.sh/)
-brew install ffmpeg
-
-# on Windows using Chocolatey (https://chocolatey.org/)
-choco install ffmpeg
-```
-
-## Usage
-
-The following command will generate a `subtitled/video.mp4` file contained the input video with overlayed subtitles.
-
-    auto_subtitle /path/to/video.mp4 -o subtitled/
-
-The default setting (which selects the `small` model) works well for transcribing English. You can optionally use a bigger model for better results (especially with other languages). The available models are `tiny`, `tiny.en`, `base`, `base.en`, `small`, `small.en`, `medium`, `medium.en`, `large`.
-
-    auto_subtitle /path/to/video.mp4 --model medium
-
-Adding `--task translate` will translate the subtitles into English:
-
-    auto_subtitle /path/to/video.mp4 --task translate
-
-Run the following to view all available options:
-
-    auto_subtitle --help
+Or translate the [batshit crazy](https://twitter.com/altryne/status/1575992634023108610) Orc like shit that the russian orcs are spewing. 
 
 ## License
 
