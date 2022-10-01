@@ -53,7 +53,7 @@ def main():
         video = ffmpeg.input(path)
         audio = video.audio
         style = "FontName=Arial,FontSize=4"
-        fonts_dir = "./font/arial.ttf"
+        fonts_dir = "../font/arial.ttf"
         stderr = ffmpeg.concat(
             video.filter('subtitles', srt_path, fontsdir=fonts_dir,force_style="OutlineColour=&H40000000,BorderStyle=3,FontName=Arial"), audio, v=1, a=1
         ).output(out_path).run(quiet=True, overwrite_output=True)
